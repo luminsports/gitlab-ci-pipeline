@@ -24,8 +24,8 @@ RUN set -ex \
     && ln -s /usr/lib/x86_64-linux-gnu/libsybdb.so /usr/lib/ \
     && pecl install sqlsrv pdo_sqlsrv \
     && docker-php-ext-configure odbc --with-unixODBC=shared,/usr \
-    && docker-php-ext-install odbc \
-    && docker-php-ext-enable sqlsrv pdo_sqlsrv pdo_dblib \
+    && docker-php-ext-install odbc pdo_dblib \
+    && docker-php-ext-enable sqlsrv pdo_sqlsrv  \
     && docker-php-source delete \
     && apt-get purge -y --auto-remove
 
