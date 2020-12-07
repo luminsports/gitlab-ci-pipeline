@@ -27,9 +27,9 @@ RUN set -ex \
     && docker-php-ext-install odbc pdo_dblib \
     && docker-php-ext-enable sqlsrv pdo_sqlsrv  \
     && docker-php-source delete \
-    && apt-get purge -y --auto-remove
-    && composer self-update --2
-    && composer global remove hirak/prestissimo
+    && apt-get purge -y --auto-remove \
+    && composer self-update --2 \
+    && composer global remove hirak/prestissimo \
     && composer global require laravel/vapor-cli
 
 USER $IMAGE_USER
