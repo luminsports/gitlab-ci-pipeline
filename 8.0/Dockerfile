@@ -50,6 +50,8 @@ WORKDIR /var/www/html
 
 FROM builder
 
+USER root
+
 RUN set -ex \
     && docker-php-source extract \
     && { \
