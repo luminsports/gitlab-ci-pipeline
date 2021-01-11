@@ -44,6 +44,12 @@ RUN bash ./packages.sh \
   && curl -fsSL https://goss.rocks/install | GOSS_VER=v${GOSS_VERSION} sh \
   && bash ./cleanup.sh
 
+USER $IMAGE_USER
+
+WORKDIR /var/www/html
+
+FROM builder
+
 RUN set -ex \
     && docker-php-source extract \
     && { \
@@ -73,5 +79,3 @@ RUN set -ex \
     && composer global require laravel/vapor-cli
 
 USER $IMAGE_USER
-
-WORKDIR /var/www/html
