@@ -78,6 +78,8 @@ RUN set -ex \
     && docker-php-ext-enable sqlsrv pdo_sqlsrv \
     && docker-php-source delete \
     && apt-get purge -y --auto-remove \
-    && composer global require laravel/vapor-cli
+    && composer global require laravel/vapor-cli \
+    && rm -rf ~/.composer/cache/* \
+    && chown -R $IMAGE_USER:$IMAGE_USER /var/www $HOME
 
 USER $IMAGE_USER
